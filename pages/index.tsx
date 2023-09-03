@@ -12,7 +12,7 @@ const Index: NextPage = () => {
       <h1>Welcome to OSBIT Shortener URL</h1>
       <p>Try changes the url to see what will happen</p>
       <p>URL:</p>
-      <p>1. /youtube</p>
+      <p>1. /Youtube</p>
       <p>2. /instagaram</p>
       <p>3. /facebook</p>
     </>

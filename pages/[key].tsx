@@ -6,7 +6,7 @@ export default function Key() {
   const { key } = router.query;
   const jsonFile = [
     {
-      key: "youtube",
+      key: "Youtube",
       link: "https://youtube.com",
     },
     {
@@ -20,7 +20,7 @@ export default function Key() {
   ];
 
   const redirectURL = () => {
-    const foundKey = jsonFile.find(obj => obj.key.toLowerCase() === key);
+    const foundKey = jsonFile.find(obj => obj.key === key);
     if (foundKey) {
       router.replace(foundKey.link)
     } else {

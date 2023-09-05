@@ -22,7 +22,7 @@ export default function Key() {
   const redirectURL = () => {
     const foundKey = jsonFile.find(obj => obj.key.toLowerCase() === key);
     if (foundKey) {
-      window.location.href = foundKey.link
+      router.replace(foundKey.link)
     } else {
       router.push('/404');
     }

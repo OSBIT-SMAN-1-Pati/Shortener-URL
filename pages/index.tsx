@@ -20,7 +20,7 @@ const Index: NextPage = () => {
       long: longUrl,
       short:shortUrl
     }
-    const response = await fetch('api/hello',{
+    const response = await fetch('api/hash',{
       method: "POST",
       body: JSON.stringify(data)
     })

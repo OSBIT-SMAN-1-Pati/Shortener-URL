@@ -17,10 +17,10 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<ResponseData>
 ) {
-  const data = JSON.parse(req.body)
+  const {longUrl,shortUrl} = JSON.parse(req.body)
   if(req.method !== "POST"){
     res.status(405).json({ message: 'Invalid' ,status:res.statusCode})
   } else
-  
-  res.status(200).json({ message:`From ${data.long} to ${data.short || randomUrl(9)} `})
+  console.log(shortUrl)
+  res.status(200).json({ message:`From ${longUrl} to ${shortUrl || randomUrl(9)} `})
 }

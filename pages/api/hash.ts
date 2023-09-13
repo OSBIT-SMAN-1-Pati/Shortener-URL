@@ -6,7 +6,7 @@ type ResponseData = {
 }
 function randomUrl(lenght:number){
   let shortUrl = ''
-  const allowedChar = 'abcdefghijklmnopkrstufwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
+  const allowedChar = 'abcdefghijklmnopkrstufwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
   for (let i=0;i<lenght;i++){
     const randomChar = Math.floor(Math.random()* allowedChar.length)
     shortUrl += allowedChar[randomChar]

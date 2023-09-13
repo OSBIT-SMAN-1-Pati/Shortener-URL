@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
- 
+
 type ResponseData = {
   message: string
   status?: number | string 
@@ -21,6 +21,5 @@ export default function handler(
   if(req.method !== "POST"){
     res.status(405).json({ message: 'Invalid' ,status:res.statusCode})
   } else
-  console.log(shortUrl)
-  res.status(200).json({ message:`From ${longUrl} to ${shortUrl || randomUrl(9)} `})
+    res.status(200).json({ message:`From ${longUrl} to ${shortUrl || randomUrl(9)} `})
 }

@@ -1,18 +1,14 @@
 import { useFormik,Formik,Form,Field,ErrorMessage} from "formik";
 import * as yup from "yup"
 import type { GetServerSideProps } from "next";
-import {getCookie} from "cookies-next";
 import {prisma} from "@/lib/prisma"
+import { authOptions } from "../../api/auth/[...nextauth]";
+import { getServerSession } from "next-auth/next";
+import { signIn } from "next-auth/react";
+ 
 export const getServerSideProps= (async ({req,res})=>{
-    const token = getCookie("sessionUser",{req,res})
-    const user = await prisma.user.findFirst(
-        {
-            where: {
-                sessionToken:token
-            },
-        }
-    )
-    if(user?.sessionToken){
+    const cred = await getServerSession(req,res,authOptions)
+    if(cred){
         return {props:{},redirect:{
             permanent:false,
             destination:"/"
@@ -31,14 +27,14 @@ export default function SignUp(){
         const {email,password,username} = values
         const req = {email,password,username}
         try {
-            const res:any = fetch("/api/signup",{
+            const res = await fetch("/api/signup",{
             method:"POST",
-            body:JSON.stringify(req)
+            body:JSON.stringify(req)    
         })
-        console.log("Ok")
-    }catch(_){
+        res.status === 200 ? signIn("credentials",{callbackUrl:"/",password:password,email:email}):alert("no") 
+        }catch(_){
         throw _
-    } 
+        } 
     }
     
     const validation = yup.object().shape({

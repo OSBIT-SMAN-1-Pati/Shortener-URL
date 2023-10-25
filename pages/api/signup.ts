@@ -13,17 +13,14 @@ export default async function handler(req: NextApiRequest,
       }
       const {username,email,password} = JSON.parse(req.body) 
       const hash = bcrypt.hashSync(password,10)
-    const user = await prisma.user.create({
+      const user = await prisma.user.create({
         data:{
             name:username,
             email,
             password:hash,
-            sessionToken: crypto.randomBytes(48).toString("hex"),
-            sessionExpired: new Date(Date.now()+1000*60*60*24)
         }   
     }
     )
-    setCookie("sessionUser",user.sessionToken,{req,res})
     res.status(200).end()
 }  
      

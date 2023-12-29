@@ -1,4 +1,4 @@
-const getMetaData = require("metadata-scrapper");
+const getMetaData = require("metadata-scraper");
 
 function getMetaTags(url) {
   async function run() {
